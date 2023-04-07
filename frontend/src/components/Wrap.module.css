@@ -1,0 +1,18 @@
+.navBox {
+    height: 50px;
+    background: #1890ff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px;
+    align-items: center;
+}
+.logo{
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.mainBox{
+    margin: 30px auto;
+    max-width: 1000px;
+}
