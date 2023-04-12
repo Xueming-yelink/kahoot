@@ -53,6 +53,7 @@ const columns = [
     },
   },
 ];
+let loop = null;
 export default function GameBoard () {
   const { playerId } = useParams();
   const questionItemRef = useRef({});
@@ -108,13 +109,16 @@ export default function GameBoard () {
       });
       console.log('myGameResults = ', myGameResults);
       setResults(myGameResults);
+      if(loop){
+        clearInterval(loop);
+      }
     }
   };
 
   useEffect(() => {
     if (playerId) {
       getGameStatus();
-      const loop = setInterval(() => {
+      loop = setInterval(() => {
         getGameStatus();
       }, 1000);
       return () => {
