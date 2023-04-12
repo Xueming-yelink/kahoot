@@ -1,29 +1,25 @@
-import React, { useEffect } from "react";
-import { useNavigate, Route, Routes, Outlet } from "react-router-dom";
-import fetchData, { getToken } from "../common/fetchData";
-import { Button } from "antd";
+import React, { useEffect } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
+import fetchData, { getToken } from '../common/fetchData';
+import { Button } from 'antd';
 import {
-  HomeOutlined,
-  LoadingOutlined,
-  SettingFilled,
-  SmileOutlined,
-  SyncOutlined,
-} from "@ant-design/icons";
-import sty from "./Wrap.module.css";
+  HomeOutlined
+} from '@ant-design/icons';
+import sty from './Wrap.module.css';
 
-export default function Wrap() {
+export default function Wrap () {
   const navigate = useNavigate();
   const logoutHandler = async () => {
     await fetchData({
-      url: "/admin/auth/logout",
-      method: "POST",
+      url: '/admin/auth/logout',
+      method: 'POST',
     });
-    window.localStorage.removeItem("token");
-    navigate("/login");
+    window.localStorage.removeItem('token');
+    navigate('/login');
   };
   useEffect(() => {
     if (!getToken()) {
-      navigate("/login");
+      navigate('/login');
     }
   }, []);
 
@@ -32,11 +28,11 @@ export default function Wrap() {
       <nav className={sty.navBox}>
         <HomeOutlined
           onClick={() => {
-            navigate("/");
+            navigate('/');
           }}
           className={sty.logo}
         />
-        <Button onClick={logoutHandler} size="small" type="primary" danger>
+        <Button onClick={logoutHandler} size='small' type='primary' danger>
           Logout
         </Button>
       </nav>
