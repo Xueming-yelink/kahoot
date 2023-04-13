@@ -1,0 +1,19 @@
+.addGameBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.optBox {
+    margin: 10px 0 0;
+}
+
+.danger {
+    color: red;
+}
+
+.table {
+    width: 100%;
+    overflow: auto hidden;
+}

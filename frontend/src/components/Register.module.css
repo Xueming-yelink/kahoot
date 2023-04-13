@@ -7,5 +7,6 @@
     align-items: center;
 }
 .card{
-    width: 600px;
+    max-width: 600px;
+    width: 90%;
 }

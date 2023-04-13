@@ -1,29 +1,34 @@
-import React from "react";
-import { Card, Form, Input, Button, Space, message } from "antd";
-import { useNavigate } from "react-router-dom";
-import fetchData from "../common/fetchData";
-import sty from "./Login.module.css";
+import React from 'react';
+import { Card, Form, Input, Button, Space, message, Row, Col } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import fetchData from '../common/fetchData';
+import sty from './Login.module.css';
 
-export default function Login() {
+export default function Login () {
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 13) {
+      form.submit();
+    }
+  };
   const onFinish = async (data) => {
     const { token } = await fetchData({
-      url: "/admin/auth/login",
-      method: "POST",
+      url: '/admin/auth/login',
+      method: 'POST',
       data,
     });
-    window.localStorage.setItem("token", token);
-    message.success("Login successful!");
-    navigate("/");
+    window.localStorage.setItem('token', token);
+    message.success('Login successful!');
+    navigate('/');
   };
 
   return (
     <div className={sty.box}>
-      <Card className={sty.card} title="Login" bordered={false}>
+      <Card className={sty.card} title='Login' bordered={false}>
         <Form
           form={form}
-          name="form"
+          name='form'
           labelCol={{
             span: 8,
           }}
@@ -31,23 +36,31 @@ export default function Login() {
             span: 16,
           }}
           onFinish={onFinish}
-          autoComplete="off"
+          onKeyDown={handleKeyPress}
+          autoComplete='off'
         >
           <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Email cannot be empty!" }]}
+            label='Email'
+            name='email'
+            rules={[{ required: true, message: 'Email cannot be empty!' }]}
           >
-            <Input />
+            <Input
+                inputProps={{
+                  'aria-describedby': 'Email',
+                }}
+            />
           </Form.Item>
 
           <Form.Item
-            name="password"
-            label="Password"
+            name='password'
+            label='Password'
+            inputProps={{
+              'aria-describedby': 'Password',
+            }}
             rules={[
               {
                 required: true,
-                message: "Password cannot be empty!",
+                message: 'Password cannot be empty!',
               },
             ]}
           >
@@ -61,23 +74,27 @@ export default function Login() {
           >
             <Space>
               <Button
-                type="primary"
+                type='primary'
                 onClick={() => {
                   form.submit();
                 }}
               >
                 Login
               </Button>
-              <Button
-                onClick={() => {
-                  navigate("/register");
-                }}
-                type="link"
-              >
-                don't have an account yet, register now
-              </Button>
             </Space>
           </Form.Item>
+          <Row justify='center'>
+            <Col>
+              <Button
+                onClick={() => {
+                  navigate('/register');
+                }}
+                type='link'
+              >
+                do not have an account yet, register now
+              </Button>
+            </Col>
+          </Row>
         </Form>
       </Card>
     </div>
