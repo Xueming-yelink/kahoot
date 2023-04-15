@@ -7,11 +7,11 @@ import sty from './Login.module.css';
 export default function Login () {
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const handleKeyPress = (event) => {
-    if (event.keyCode === 13) {
-      form.submit();
-    }
-  };
+  // const handleKeyPress = (event) => {
+  //   if (event.keyCode === 13) {
+  //     form.submit();
+  //   }
+  // };
   const onFinish = async (data) => {
     const { token } = await fetchData({
       url: '/admin/auth/login',
@@ -36,7 +36,7 @@ export default function Login () {
             span: 16,
           }}
           onFinish={onFinish}
-          onKeyDown={handleKeyPress}
+          // onKeyDown={handleKeyPress}
           autoComplete='off'
         >
           <Form.Item
@@ -75,7 +75,8 @@ export default function Login () {
             <Space>
               <Button
                 type='primary'
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   form.submit();
                 }}
               >

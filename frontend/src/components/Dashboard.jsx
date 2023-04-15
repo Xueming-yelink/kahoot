@@ -56,7 +56,7 @@ export default function Dashboard () {
         method: 'GET',
       });
       const totalTime = quizzeItemDetail.questions.reduce((pre, cur) => {
-        return (pre.time || 0) + cur.time;
+        return pre + cur.time;
       }, 0);
       const newGameItem = {
         ...quizzeItem,

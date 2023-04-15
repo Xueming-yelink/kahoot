@@ -30,6 +30,9 @@ fetchData.interceptors.response.use(
   },
   error => {
     message.error(error.response.data.error)
+    if (error.response.status === 403) {
+      window.location.href = '/login';
+    }
     return Promise.reject(error)
   }
 )

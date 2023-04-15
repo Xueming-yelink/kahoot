@@ -16,6 +16,11 @@ const columns = [
     },
   },
   {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
     title: 'Score',
     dataIndex: 'score',
     key: 'score',
