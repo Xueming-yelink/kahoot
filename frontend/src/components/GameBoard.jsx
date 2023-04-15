@@ -154,6 +154,7 @@ export default function GameBoard () {
                         url: `/play/${playerId}/answer`,
                         method: 'GET',
                       });
+                      console.log('answerIds111 = ', answerIds);
                       setAnswerIds(resData.answerIds);
                       const myAnswerIds = [];
                       options.forEach((item, index) => {
@@ -196,7 +197,7 @@ export default function GameBoard () {
                 </Text>
               </Paragraph>
               {answerIds.map((item, index) => {
-                return <Paragraph key={item}>Options {index + 1}</Paragraph>;
+                return <Paragraph key={item}>Options {item + 1}</Paragraph>;
               })}
             </Result>
           )}

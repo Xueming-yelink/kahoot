@@ -90,7 +90,7 @@ export default function NewQuestion () {
             form.submit();
           }}
         >
-          Enter
+          Save
         </Button>
       }
       className={sty.box}

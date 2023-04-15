@@ -351,7 +351,7 @@ export default function EditQuestion () {
                   form.submit();
                 }}
               >
-                Enter
+                Save
               </Button>
             </Form.Item>
           </Col>

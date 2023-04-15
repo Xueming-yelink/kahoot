@@ -137,7 +137,7 @@ export default function EditGame () {
               form.submit();
             }}
           >
-            Enter
+            Save
           </Button>
         }
       >
