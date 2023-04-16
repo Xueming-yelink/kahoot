@@ -16,11 +16,13 @@ import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import sty from './EditGame.module.css';
 
+// Edit
 export default function EditGame () {
   const navigate = useNavigate();
   const { gameId } = useParams();
   const [form] = Form.useForm();
   const [questions, setQuestions] = useState([]);
+  // Game attributes setting
   const columns = [
     {
       title: 'Title',
@@ -83,7 +85,7 @@ export default function EditGame () {
       ),
     },
   ];
-
+  // game details
   const getGameDetails = async () => {
     const { name, thumbnail, questions } = await fetchData({
       url: `/admin/quiz/${gameId}`,
@@ -118,14 +120,14 @@ export default function EditGame () {
     });
     message.success('Edit Game successfully!');
   };
-
+  
   const normFile = (event) => {
     if (Array.isArray(event)) {
       return event;
     }
     return event?.fileList;
   };
-
+  // Edit game page
   return (
     <Card title='Dashboard' className={sty.box}>
       <Card

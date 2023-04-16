@@ -23,10 +23,13 @@ import sty from './Dashboard.module.css';
 
 const { Paragraph } = Typography;
 const { Meta } = Card;
+
+// Dashbord
 export default function Dashboard () {
   const navigate = useNavigate();
   const [gameList, setGameList] = useState([]);
   const [gameName, setGameName] = useState('');
+  // Game attributes
   const addGameHanlder = async () => {
     if (!gameName) {
       message.error('Game Name cannot be empty!');
@@ -42,6 +45,7 @@ export default function Dashboard () {
     getGameList();
     message.success('Add Game successfully!');
   };
+  // Get games
   const getGameList = async () => {
     const { quizzes } = await fetchData({
       url: '/admin/quiz',
@@ -76,7 +80,7 @@ export default function Dashboard () {
     console.log('newGameList = ', newGameList);
     setGameList(newGameList);
   };
-
+  //Game start
   const startGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}/start`,
@@ -86,6 +90,7 @@ export default function Dashboard () {
       url: `/admin/quiz/${item.id}`,
       method: 'GET',
     });
+    // game link
     const copyLink = `${window.location.href}GameJoinBoard/${quizzeItemDetail.active}`;
     getGameList();
     Modal.info({
@@ -109,7 +114,7 @@ export default function Dashboard () {
       ),
     });
   };
-
+  // stop
   const stopGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}/end`,
@@ -127,7 +132,7 @@ export default function Dashboard () {
     });
     message.success('Stop successfully!');
   };
-
+  // next question
   const anvanceGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}/advance`,
@@ -136,7 +141,7 @@ export default function Dashboard () {
     getGameList();
     message.success('Next successfull');
   };
-
+  // delete 
   const deleteGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}`,
@@ -149,7 +154,8 @@ export default function Dashboard () {
   useEffect(() => {
     getGameList();
   }, []);
-
+  
+  // dashboard page
   return (
     <Card title='Dashboard' className={sty.box}>
       <div className={sty.addGameBox}>
