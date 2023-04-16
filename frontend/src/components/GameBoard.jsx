@@ -199,7 +199,7 @@ export default function GameBoard () {
                 </Text>
               </Paragraph>
               {answerIds.map((item, index) => {
-                return <Paragraph key={item}>Options {item + 1}</Paragraph>;
+                return <Paragraph key={item}>Option {item + 1}</Paragraph>;
               })}
             </Result>
           )}
