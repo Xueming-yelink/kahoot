@@ -19,8 +19,10 @@ import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import sty from './GameBoard.module.css';
 
+// Game board
 const { Paragraph, Text } = Typography;
 const { Countdown } = Statistic;
+// result
 const columns = [
   {
     title: 'Question',
@@ -70,7 +72,7 @@ export default function GameBoard () {
   const [options, setOptions] = useState([]);
   const [now, setNow] = useState(0);
   const [gameStatus, setGameStatus] = useState('');
-
+  // Game status
   const getGameStatus = async () => {
     try {
       const { started } = await fetchData({
@@ -125,7 +127,7 @@ export default function GameBoard () {
       };
     }
   }, [playerId]);
-
+  // game page
   return (
     <Card title='Play Game' className={sty.box}>
       {gameStatus === false && (

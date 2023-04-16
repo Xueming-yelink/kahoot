@@ -120,7 +120,6 @@ export default function EditGame () {
     });
     message.success('Edit Game successfully!');
   };
-  
   const normFile = (event) => {
     if (Array.isArray(event)) {
       return event;

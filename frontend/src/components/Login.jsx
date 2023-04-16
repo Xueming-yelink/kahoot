@@ -3,7 +3,7 @@ import { Card, Form, Input, Button, Space, message, Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import fetchData from '../common/fetchData';
 import sty from './Login.module.css';
-
+// login
 export default function Login () {
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -22,7 +22,7 @@ export default function Login () {
     message.success('Login successful!');
     navigate('/');
   };
-
+  // login page
   return (
     <div className={sty.box}>
       <Card className={sty.card} title='Login' bordered={false}>

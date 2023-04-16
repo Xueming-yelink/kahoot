@@ -80,7 +80,7 @@ export default function Dashboard () {
     console.log('newGameList = ', newGameList);
     setGameList(newGameList);
   };
-  //Game start
+  // Game start
   const startGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}/start`,
@@ -141,7 +141,7 @@ export default function Dashboard () {
     getGameList();
     message.success('Next successfull');
   };
-  // delete 
+  // delete
   const deleteGame = async (item) => {
     await fetchData({
       url: `/admin/quiz/${item.id}`,
@@ -154,7 +154,6 @@ export default function Dashboard () {
   useEffect(() => {
     getGameList();
   }, []);
-  
   // dashboard page
   return (
     <Card title='Dashboard' className={sty.box}>

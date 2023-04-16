@@ -6,7 +6,7 @@ import {
   HomeOutlined
 } from '@ant-design/icons';
 import sty from './Wrap.module.css';
-
+// wrap
 export default function Wrap () {
   const navigate = useNavigate();
   const logoutHandler = async () => {
@@ -22,7 +22,7 @@ export default function Wrap () {
       navigate('/login');
     }
   }, []);
-
+  // page
   return (
     <header className={sty.box}>
       <nav className={sty.navBox}>

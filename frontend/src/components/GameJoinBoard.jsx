@@ -4,11 +4,12 @@ import { Form, Card, Button, Input, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import sty from './GameJoinBoard.module.css';
 
+// Join the game
 export default function GameJoinBoard () {
   const navigate = useNavigate();
   const { sessionid } = useParams();
   const [form] = Form.useForm();
-
+  // join game by id
   const editGameHanlder = async ({ name, sessionId }) => {
     const { playerId } = await fetchData({
       url: `/play/join/${sessionId}`,
@@ -26,7 +27,7 @@ export default function GameJoinBoard () {
       sessionId: sessionid,
     });
   }, []);
-
+  // game page
   return (
     <Card
       title='Play Join'

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { Line, Pie } from '@ant-design/plots';
 import sty from './GameResult.module.css';
-
+// Result
 const columns = [
   {
     title: 'Ranking',
@@ -26,6 +26,7 @@ const columns = [
     key: 'score',
   },
 ];
+// attributes of result
 export default function GameResult () {
   const { sessionid, gameId } = useParams();
   const [top5s, setTop5s] = useState([]);
@@ -83,11 +84,13 @@ export default function GameResult () {
       const rightArray = correctObj[item].filter((bol) => {
         return bol;
       });
+      // grades
       correctArray.push({
         label: `Question ${Number(item) + 1}`,
         value: (rightArray.length / correctObj[item].length) * 100,
       });
     }
+    // time length
     for (const item in timeObj) {
       const totoalTime = timeObj[item].reduce((preItem, curItem) => {
         return preItem + curItem;
@@ -103,7 +106,7 @@ export default function GameResult () {
     // console.log('timeArray = ', timeArray);
     // console.log('top5 = ', top5);
   };
-
+  // line graph to show the grade
   const lineConfig = {
     yAxis: {
       min: 0,
@@ -116,7 +119,7 @@ export default function GameResult () {
       tickCount: 5,
     },
   };
-
+  // pie graph to show the time
   const pieConfig = {
     appendPadding: 10,
     angleField: 'value',
@@ -155,7 +158,7 @@ export default function GameResult () {
   useEffect(() => {
     getGameResult();
   }, []);
-
+  // result page
   return (
     <Card title='Game Results' className={sty.box}>
       <Card title='Top 5'>

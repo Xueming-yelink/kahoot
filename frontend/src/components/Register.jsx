@@ -3,7 +3,7 @@ import { Card, Form, Input, Button, Space, message, Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import fetchData from '../common/fetchData';
 import sty from './Register.module.css';
-
+// Register
 export default function Register () {
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -22,7 +22,7 @@ export default function Register () {
     message.success('Register successful!');
     navigate('/');
   };
-
+  // register page
   return (
     <div className={sty.box}>
       <Card className={sty.card} title='Register' bordered={false}>

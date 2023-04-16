@@ -16,7 +16,7 @@ import {
 import { PlusOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import sty from './EditQuestion.module.css';
-
+// Questions
 export default function EditQuestion () {
   const navigate = useNavigate();
   const { gameId, questionId } = useParams();
@@ -24,7 +24,7 @@ export default function EditQuestion () {
   const [options, setOptions] = useState([]);
   const [form] = Form.useForm();
   const [questions, setQuestions] = useState([]);
-
+  // Question details
   const getGameDetails = async () => {
     const { questions } = await fetchData({
       url: `/admin/quiz/${gameId}`,
@@ -33,6 +33,7 @@ export default function EditQuestion () {
     setQuestions(questions);
     const questionDetail = questions[questionId];
     console.log('questionDetail = ', questionDetail);
+    // question details value
     if (questionDetail) {
       const { title, time, points, attach, type, photo, video } =
         questionDetail;
@@ -43,6 +44,7 @@ export default function EditQuestion () {
         attach,
         type,
       });
+      // photo or video
       setAttachType(attach);
       if (attach === 'photo') {
         form.setFieldsValue({
@@ -65,7 +67,7 @@ export default function EditQuestion () {
   useEffect(() => {
     getGameDetails();
   }, [gameId]);
-
+  // game options setting
   const editGameHanlder = async (data) => {
     if (options.length < 2 || options.length > 6) {
       message.error('Anywhere between 2 and 6 answers!');
@@ -119,7 +121,7 @@ export default function EditQuestion () {
     }
     return event?.fileList;
   };
-
+  // Question edit page
   return (
     <Card title='Edit a question' className={sty.box}>
       <Form

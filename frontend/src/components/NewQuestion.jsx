@@ -16,7 +16,7 @@ import {
 import { PlusOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import sty from './NewQuestion.module.css';
-
+// add new question
 export default function NewQuestion () {
   const navigate = useNavigate();
   const { gameId } = useParams();
@@ -36,7 +36,7 @@ export default function NewQuestion () {
   useEffect(() => {
     getGameDetails();
   }, [gameId]);
-
+  // attributes of game questions
   const editGameHanlder = async (data) => {
     if (options.length < 2 || options.length > 6) {
       message.error('Anywhere between 2 and 6 answers!');
@@ -79,7 +79,7 @@ export default function NewQuestion () {
     }
     return event?.fileList;
   };
-
+  // page
   return (
     <Card
       title='Add a new question'
